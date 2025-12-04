@@ -23,14 +23,14 @@ export const Navigation = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="fixed top-4 left-4 right-4 z-50 bg-background/80 backdrop-blur-lg border border-border/50 rounded-2xl shadow-lg"
+      className="fixed top-4 left-4 right-4 z-50 bg-cream/90 backdrop-blur-lg border border-sage/20 rounded-2xl shadow-soft"
     >
       <div className="container-narrow mx-auto px-6 lg:px-12">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link
             to="/"
-            className="font-display text-xl md:text-2xl text-foreground hover:text-primary transition-colors"
+            className="font-display text-xl md:text-2xl text-sage-dark hover:text-primary transition-colors"
           >
             Martina Zorbach
           </Link>
@@ -43,21 +43,21 @@ export const Navigation = () => {
                 to={link.href}
                 className={`font-body text-sm transition-colors underline-animation ${
                   location.pathname === link.href
-                    ? "text-primary"
-                    : "text-muted-foreground hover:text-primary"
+                    ? "text-primary font-medium"
+                    : "text-warm-gray hover:text-primary"
                 }`}
               >
                 {link.name}
               </Link>
             ))}
-            <Button asChild size="sm">
+            <Button asChild size="sm" className="bg-sage hover:bg-sage-dark text-cream">
               <Link to="/kontakt">Termin buchen</Link>
             </Button>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden p-2 text-foreground"
+            className="lg:hidden p-2 text-sage-dark hover:text-primary transition-colors"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >
@@ -74,7 +74,7 @@ export const Navigation = () => {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="lg:hidden bg-background border-b border-border"
+            className="lg:hidden bg-cream/95 border-t border-sage/10 rounded-b-2xl"
           >
             <div className="px-6 py-6 flex flex-col gap-4">
               {navLinks.map((link, index) => (
@@ -97,7 +97,7 @@ export const Navigation = () => {
                   </Link>
                 </motion.div>
               ))}
-              <Button asChild className="mt-2">
+              <Button asChild className="mt-2 bg-sage hover:bg-sage-dark text-cream">
                 <Link to="/kontakt" onClick={() => setIsOpen(false)}>
                   Termin buchen
                 </Link>
