@@ -1,34 +1,55 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { Button } from "./ui/button";
 import { Link } from "react-router-dom";
 import martinaHero from "@/assets/martina-hero.png";
 
 export const HeroSection = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"]
+  });
+
+  // Parallax transforms for different elements
+  const y1 = useTransform(scrollYProgress, [0, 1], [0, 200]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [0, 300]);
+  const y3 = useTransform(scrollYProgress, [0, 1], [0, 150]);
+  const y4 = useTransform(scrollYProgress, [0, 1], [0, -100]);
+  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
+  const rotate1 = useTransform(scrollYProgress, [0, 1], [0, 45]);
+  const rotate2 = useTransform(scrollYProgress, [0, 1], [45, 90]);
+
   const scrollToAbout = () => {
     document.querySelector("#about")?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-background">
-      {/* Animated Background Grid */}
-      <div className="absolute inset-0 opacity-[0.03]">
+    <section ref={sectionRef} className="relative min-h-screen overflow-hidden bg-background">
+      {/* Animated Background Grid with Parallax */}
+      <motion.div 
+        className="absolute inset-0 opacity-[0.03]"
+        style={{ y: y1, scale }}
+      >
         <div className="absolute inset-0" style={{
           backgroundImage: `linear-gradient(hsl(var(--primary)) 1px, transparent 1px),
                            linear-gradient(90deg, hsl(var(--primary)) 1px, transparent 1px)`,
           backgroundSize: '60px 60px'
         }} />
-      </div>
+      </motion.div>
 
-      {/* Floating Gradient Orbs */}
+      {/* Floating Gradient Orbs with Parallax */}
       <motion.div
         className="absolute top-[10%] left-[5%] w-[500px] h-[500px] rounded-full"
         style={{
           background: 'radial-gradient(circle, hsl(var(--primary) / 0.15) 0%, transparent 70%)',
+          y: y2,
+          opacity,
         }}
         animate={{
           x: [0, 30, 0],
-          y: [0, -20, 0],
           scale: [1, 1.1, 1],
         }}
         transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
@@ -37,10 +58,11 @@ export const HeroSection = () => {
         className="absolute bottom-[10%] right-[10%] w-[400px] h-[400px] rounded-full"
         style={{
           background: 'radial-gradient(circle, hsl(var(--accent) / 0.2) 0%, transparent 70%)',
+          y: y3,
+          opacity,
         }}
         animate={{
           x: [0, -20, 0],
-          y: [0, 30, 0],
           scale: [1.1, 1, 1.1],
         }}
         transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
@@ -49,30 +71,37 @@ export const HeroSection = () => {
         className="absolute top-[40%] right-[30%] w-[300px] h-[300px] rounded-full"
         style={{
           background: 'radial-gradient(circle, hsl(var(--secondary) / 0.4) 0%, transparent 70%)',
+          y: y1,
+          opacity,
         }}
         animate={{
           x: [0, 40, 0],
-          y: [0, -40, 0],
         }}
         transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
       />
 
-      {/* Floating Geometric Shapes */}
+      {/* Floating Geometric Shapes with Parallax */}
       <motion.div
         className="absolute top-[15%] right-[15%] w-20 h-20 border-2 border-primary/20 rounded-2xl"
-        animate={{ rotate: 360 }}
-        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+        style={{ y: y4, rotate: rotate1, opacity }}
       />
       <motion.div
         className="absolute bottom-[25%] left-[8%] w-16 h-16 bg-accent/10 rounded-full"
-        animate={{ y: [0, -20, 0], opacity: [0.3, 0.6, 0.3] }}
+        style={{ y: y3, opacity }}
+        animate={{ scale: [1, 1.2, 1] }}
         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
         className="absolute top-[60%] right-[8%] w-12 h-12 border border-accent/30"
-        style={{ transform: 'rotate(45deg)' }}
-        animate={{ scale: [1, 1.2, 1], rotate: [45, 90, 45] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        style={{ y: y2, rotate: rotate2, opacity }}
+      />
+      <motion.div
+        className="absolute top-[30%] left-[15%] w-6 h-6 bg-primary/20 rounded-full"
+        style={{ y: y1, opacity }}
+      />
+      <motion.div
+        className="absolute bottom-[40%] right-[25%] w-10 h-10 border border-primary/15 rounded-full"
+        style={{ y: y4, opacity }}
       />
 
       {/* Main Content Grid */}
