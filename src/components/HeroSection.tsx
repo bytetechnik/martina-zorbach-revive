@@ -108,11 +108,25 @@ export const HeroSection = () => {
       <div className="relative z-10 min-h-screen grid lg:grid-cols-2 items-center">
         {/* Left Content */}
         <div className="px-6 lg:px-16 xl:px-24 pt-32 pb-12 lg:py-20">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="mb-6"
+          >
+            <span className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full">
+              <Sparkles size={14} className="text-primary" />
+              <span className="font-body text-xs tracking-widest uppercase text-primary font-medium">
+                Diplom-Psychologin & Systemische Coachin
+              </span>
+            </span>
+          </motion.div>
+
           <motion.h1
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="font-display text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-foreground leading-[0.95] mb-6"
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="font-display text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-foreground leading-[0.95] mb-8"
           >
             <span className="block">Martina</span>
             <span className="block">Zorbach</span>
@@ -120,25 +134,11 @@ export const HeroSection = () => {
               className="block text-primary italic mt-2"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
             >
               Coaching
             </motion.span>
           </motion.h1>
-
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="mb-8"
-          >
-            <span className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full border border-primary/20">
-              <Sparkles size={14} className="text-primary" />
-              <span className="font-body text-xs tracking-widest uppercase text-primary font-medium">
-                Diplom-Psychologin & Systemische Coachin
-              </span>
-            </span>
-          </motion.div>
 
           <motion.p
             initial={{ opacity: 0, y: 30 }}
