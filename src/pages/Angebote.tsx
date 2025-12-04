@@ -10,7 +10,7 @@ import leadershipImg from "@/assets/leadership-coaching.jpg";
 
 const services = [
   {
-    id: "fuehrungskraeftecoaching",
+    id: "fuehrungskraefte",
     icon: Briefcase,
     title: "Führungskräfte Coaching",
     intro: "Als Führungskraft stehen Sie vor großen Herausforderungen: Entscheidungen treffen, das Business gestalten und Mitarbeiter fördern. Ein Coaching unterstützt dabei, diese Aufgaben zu meistern.",
@@ -26,7 +26,7 @@ const services = [
     color: "primary"
   },
   {
-    id: "karrierecoaching",
+    id: "karriere",
     icon: Compass,
     title: "Karriere Coaching",
     intro: "Sie suchen nach neuen Perspektiven, planen den nächsten Karriereschritt oder befinden sich in einem beruflichen Umbruch – Karriere Coaching hilft Ihnen dabei, sich zu orientieren und Hindernisse zu überwinden.",
@@ -41,7 +41,7 @@ const services = [
     color: "terracotta"
   },
   {
-    id: "lifetransitioncoaching",
+    id: "life-transition",
     icon: Heart,
     title: "Life Transition Coaching",
     intro: "Sie durchlaufen eine Lebensphase mit Unsicherheiten, Veränderungen und großen Herausforderungen. Ein Lebensabschnitts-Coaching ist eine individuelle Begleitung für Menschen, die mit einschneidenden Lebensereignissen konfrontiert sind.",
@@ -54,7 +54,7 @@ const services = [
     color: "sage"
   },
   {
-    id: "ruhestandscoaching",
+    id: "ruhestand",
     icon: Sun,
     title: "\"Ruhestands\"- Coaching",
     intro: "Das Ausscheiden aus dem regulären Erwerbsleben ist ein bedeutender Lebensübergang. Das Coaching bietet Unterstützung, Ihr Leben neu auszurichten und eine erfüllende Zukunft zu gestalten.",
@@ -69,7 +69,7 @@ const services = [
     color: "primary"
   },
   {
-    id: "persoenlichkeitsanalyse",
+    id: "persoenlichkeit",
     icon: User,
     title: "Persönlichkeitsanalyse",
     intro: "Wenn Sie mehr über Ihren Charakter, Ihre Verhaltensmuster, Ihre Motive und Kompetenzen erfahren wollen, ist eine Persönlichkeitsanalyse das richtige Tool.",
