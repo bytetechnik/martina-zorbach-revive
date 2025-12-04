@@ -1,5 +1,4 @@
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
+import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { Briefcase, Compass, Heart, Sun, User, ArrowRight } from "lucide-react";
 import { Button } from "./ui/button";
@@ -71,12 +70,53 @@ const ServiceCard = ({ service, index }: { service: typeof services[0]; index: n
 };
 
 export const ServicesSection = () => {
+  const sectionRef = useRef<HTMLElement>(null);
   const headerRef = useRef(null);
   const isHeaderInView = useInView(headerRef, { once: true, margin: "-100px" });
 
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+
+  // Parallax transforms
+  const y1 = useTransform(scrollYProgress, [0, 1], [100, -100]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [50, -150]);
+  const y3 = useTransform(scrollYProgress, [0, 1], [80, -80]);
+  const rotate1 = useTransform(scrollYProgress, [0, 1], [0, 45]);
+  const rotate2 = useTransform(scrollYProgress, [0, 1], [45, 90]);
+
   return (
-    <section id="services" className="section-padding bg-secondary/30">
-      <div className="container-narrow mx-auto">
+    <section ref={sectionRef} id="services" className="section-padding bg-secondary/30 relative overflow-hidden">
+      {/* Parallax Background Elements */}
+      <motion.div
+        className="absolute top-[10%] right-[5%] w-[300px] h-[300px] rounded-full"
+        style={{
+          background: 'radial-gradient(circle, hsl(var(--primary) / 0.08) 0%, transparent 70%)',
+          y: y1,
+        }}
+      />
+      <motion.div
+        className="absolute bottom-[20%] left-[3%] w-[250px] h-[250px] rounded-full"
+        style={{
+          background: 'radial-gradient(circle, hsl(var(--accent) / 0.1) 0%, transparent 70%)',
+          y: y2,
+        }}
+      />
+      <motion.div
+        className="absolute top-[40%] left-[10%] w-16 h-16 border-2 border-primary/10 rounded-2xl"
+        style={{ y: y3, rotate: rotate1 }}
+      />
+      <motion.div
+        className="absolute bottom-[30%] right-[8%] w-12 h-12 border border-accent/20"
+        style={{ y: y1, rotate: rotate2 }}
+      />
+      <motion.div
+        className="absolute top-[60%] right-[20%] w-8 h-8 bg-primary/5 rounded-full"
+        style={{ y: y2 }}
+      />
+
+      <div className="container-narrow mx-auto relative z-10">
         {/* Section Header */}
         <div ref={headerRef} className="text-center mb-12">
           <motion.span

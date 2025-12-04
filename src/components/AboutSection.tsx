@@ -1,4 +1,4 @@
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { Award, BookOpen, Users } from "lucide-react";
 import { Button } from "./ui/button";
@@ -24,31 +24,90 @@ const highlights = [
 ];
 
 export const AboutSection = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const sectionRef = useRef<HTMLElement>(null);
+  const contentRef = useRef(null);
+  const isInView = useInView(contentRef, { once: true, margin: "-100px" });
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+
+  // Parallax transforms
+  const imageY = useTransform(scrollYProgress, [0, 1], [60, -60]);
+  const decorY1 = useTransform(scrollYProgress, [0, 1], [100, -100]);
+  const decorY2 = useTransform(scrollYProgress, [0, 1], [50, -150]);
+  const decorY3 = useTransform(scrollYProgress, [0, 1], [80, -80]);
+  const rotate1 = useTransform(scrollYProgress, [0, 1], [0, 30]);
+  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.95, 1, 0.95]);
 
   return (
-    <section id="about" className="section-padding bg-background">
-      <div ref={ref} className="container-narrow mx-auto">
+    <section ref={sectionRef} id="about" className="section-padding bg-background relative overflow-hidden">
+      {/* Parallax Background Elements */}
+      <motion.div
+        className="absolute top-[5%] right-[10%] w-[400px] h-[400px] rounded-full"
+        style={{
+          background: 'radial-gradient(circle, hsl(var(--secondary) / 0.5) 0%, transparent 70%)',
+          y: decorY1,
+        }}
+      />
+      <motion.div
+        className="absolute bottom-[10%] left-[5%] w-[300px] h-[300px] rounded-full"
+        style={{
+          background: 'radial-gradient(circle, hsl(var(--primary) / 0.06) 0%, transparent 70%)',
+          y: decorY2,
+        }}
+      />
+      <motion.div
+        className="absolute top-[30%] right-[5%] w-20 h-20 border-2 border-accent/15 rounded-3xl"
+        style={{ y: decorY3, rotate: rotate1 }}
+      />
+      <motion.div
+        className="absolute bottom-[40%] left-[15%] w-6 h-6 bg-primary/10 rounded-full"
+        style={{ y: decorY1 }}
+      />
+      <motion.div
+        className="absolute top-[60%] right-[25%] w-10 h-10 border border-primary/10 rounded-full"
+        style={{ y: decorY2 }}
+      />
+
+      <div ref={contentRef} className="container-narrow mx-auto relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          {/* Image Column */}
+          {/* Image Column with Parallax */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8 }}
             className="relative"
           >
-            <div className="relative">
-              {/* Decorative Frame */}
-              <div className="absolute -inset-4 bg-gradient-to-br from-primary/20 to-terracotta/20 rounded-3xl -z-10" />
-              <div className="absolute -bottom-6 -right-6 w-48 h-48 bg-terracotta/10 rounded-full blur-2xl" />
+            <motion.div className="relative" style={{ y: imageY, scale }}>
+              {/* Decorative Frame with Parallax */}
+              <motion.div 
+                className="absolute -inset-4 bg-gradient-to-br from-primary/20 to-accent/20 rounded-3xl -z-10"
+                style={{ y: decorY3 }}
+              />
+              <motion.div 
+                className="absolute -bottom-6 -right-6 w-48 h-48 bg-accent/10 rounded-full blur-2xl"
+                style={{ y: decorY2 }}
+              />
               
               <img
                 src={martinaPortrait}
                 alt="Martina Zorbach"
                 className="w-full max-w-md mx-auto rounded-2xl shadow-medium object-cover aspect-square"
               />
-            </div>
+
+              {/* Floating Badge */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                transition={{ duration: 0.5, delay: 0.8 }}
+                className="absolute -bottom-4 -right-4 bg-card/90 backdrop-blur-sm rounded-xl p-4 shadow-lg border border-border/50"
+              >
+                <p className="font-display text-2xl text-primary">25+</p>
+                <p className="font-body text-xs text-muted-foreground">Jahre Erfahrung</p>
+              </motion.div>
+            </motion.div>
           </motion.div>
 
           {/* Content Column */}
@@ -91,20 +150,26 @@ export const AboutSection = () => {
               className="grid grid-cols-3 gap-4 mb-10"
             >
               {highlights.map((item, index) => (
-                <div key={item.title} className="text-center">
+                <motion.div 
+                  key={item.title} 
+                  className="text-center"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.4, delay: 0.6 + index * 0.1 }}
+                >
                   <div className="w-12 h-12 rounded-xl bg-secondary flex items-center justify-center mx-auto mb-3">
                     <item.icon size={22} className="text-primary" />
                   </div>
                   <h4 className="font-display text-sm text-foreground mb-1">{item.title}</h4>
                   <p className="font-body text-xs text-muted-foreground">{item.description}</p>
-                </div>
+                </motion.div>
               ))}
             </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.6 }}
+              transition={{ duration: 0.6, delay: 0.9 }}
               className="flex flex-col sm:flex-row gap-4"
             >
               <Button asChild size="lg">

@@ -1,4 +1,4 @@
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { Quote } from "lucide-react";
 import { Button } from "./ui/button";
@@ -23,12 +23,52 @@ const testimonials = [
 ];
 
 export const TestimonialsPreview = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const sectionRef = useRef<HTMLElement>(null);
+  const contentRef = useRef(null);
+  const isInView = useInView(contentRef, { once: true, margin: "-100px" });
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+
+  // Parallax transforms
+  const y1 = useTransform(scrollYProgress, [0, 1], [100, -100]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [60, -140]);
+  const y3 = useTransform(scrollYProgress, [0, 1], [40, -80]);
+  const rotate = useTransform(scrollYProgress, [0, 1], [0, 35]);
 
   return (
-    <section ref={ref} className="section-padding bg-primary/5">
-      <div className="container-narrow mx-auto">
+    <section ref={sectionRef} className="section-padding bg-primary/5 relative overflow-hidden">
+      {/* Parallax Background Elements */}
+      <motion.div
+        className="absolute top-[10%] right-[5%] w-[400px] h-[400px] rounded-full"
+        style={{
+          background: 'radial-gradient(circle, hsl(var(--primary) / 0.08) 0%, transparent 70%)',
+          y: y1,
+        }}
+      />
+      <motion.div
+        className="absolute bottom-[15%] left-[3%] w-[320px] h-[320px] rounded-full"
+        style={{
+          background: 'radial-gradient(circle, hsl(var(--accent) / 0.1) 0%, transparent 70%)',
+          y: y2,
+        }}
+      />
+      <motion.div
+        className="absolute top-[50%] left-[8%] w-16 h-16 border-2 border-primary/10 rounded-2xl"
+        style={{ y: y3, rotate }}
+      />
+      <motion.div
+        className="absolute bottom-[40%] right-[10%] w-10 h-10 bg-accent/10 rounded-full"
+        style={{ y: y1 }}
+      />
+      <motion.div
+        className="absolute top-[25%] left-[25%] w-6 h-6 border border-primary/15 rounded-full"
+        style={{ y: y2 }}
+      />
+
+      <div ref={contentRef} className="container-narrow mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
