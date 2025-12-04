@@ -219,6 +219,38 @@ const Kontakt = () => {
         </div>
       </section>
 
+      {/* Map Section */}
+      <section className="pb-20 bg-background">
+        <div className="container-narrow mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h3 className="font-display text-2xl text-foreground mb-6 text-center">
+              So finden Sie mich
+            </h3>
+            <div className="rounded-2xl overflow-hidden shadow-soft border border-border/50">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2556.8!2d8.6847!3d50.1447!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47bd0ea4f0e1e5f5%3A0x0!2sGummersbergstra%C3%9Fe%2017%2C%2060435%20Frankfurt%20am%20Main!5e0!3m2!1sde!2sde!4v1699000000000!5m2!1sde!2sde"
+                width="100%"
+                height="400"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Standort Martina Zorbach Coaching"
+                className="w-full"
+              />
+            </div>
+            <p className="font-body text-sm text-muted-foreground text-center mt-4">
+              Gummersbergstr. 17, 60435 Frankfurt am Main
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
       <Footer />
     </main>
   );
