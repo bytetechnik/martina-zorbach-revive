@@ -6,7 +6,7 @@ export const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-foreground text-background py-16">
+    <footer className="bg-sage-dark text-cream py-16">
       <div className="container-narrow mx-auto px-6 lg:px-12">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           {/* Brand */}
@@ -16,7 +16,7 @@ export const Footer = () => {
             viewport={{ once: true }}
           >
             <h3 className="font-display text-2xl mb-4">Martina Zorbach</h3>
-            <p className="font-body text-sm text-background/70 leading-relaxed">
+            <p className="font-body text-sm text-cream/70 leading-relaxed">
               Diplom-Psychologin & Systemische Coachin für Ihre beruflichen und persönlichen Herausforderungen.
             </p>
           </motion.div>
@@ -41,7 +41,7 @@ export const Footer = () => {
                 <li key={link.name}>
                   <Link
                     to={link.href}
-                    className="font-body text-sm text-background/70 hover:text-background transition-colors"
+                    className="font-body text-sm text-cream/70 hover:text-cream transition-colors"
                   >
                     {link.name}
                   </Link>
@@ -60,26 +60,26 @@ export const Footer = () => {
             <h4 className="font-display text-lg mb-4">Kontakt</h4>
             <ul className="space-y-3">
               <li className="flex items-start gap-3">
-                <Mail size={16} className="mt-1 text-background/50" />
+                <Mail size={16} className="mt-1 text-cream/50" />
                 <a
                   href="mailto:kontakt@martinazorbachcoaching.de"
-                  className="font-body text-sm text-background/70 hover:text-background transition-colors"
+                  className="font-body text-sm text-cream/70 hover:text-cream transition-colors"
                 >
                   kontakt@martinazorbachcoaching.de
                 </a>
               </li>
               <li className="flex items-start gap-3">
-                <Phone size={16} className="mt-1 text-background/50" />
+                <Phone size={16} className="mt-1 text-cream/50" />
                 <a
                   href="tel:+491784000881"
-                  className="font-body text-sm text-background/70 hover:text-background transition-colors"
+                  className="font-body text-sm text-cream/70 hover:text-cream transition-colors"
                 >
                   +49 178 4000881
                 </a>
               </li>
               <li className="flex items-start gap-3">
-                <MapPin size={16} className="mt-1 text-background/50" />
-                <span className="font-body text-sm text-background/70">
+                <MapPin size={16} className="mt-1 text-cream/50" />
+                <span className="font-body text-sm text-cream/70">
                   Gummersbergstr. 17<br />
                   60435 Frankfurt am Main
                 </span>
@@ -99,7 +99,7 @@ export const Footer = () => {
               <li>
                 <a
                   href="#"
-                  className="font-body text-sm text-background/70 hover:text-background transition-colors"
+                  className="font-body text-sm text-cream/70 hover:text-cream transition-colors"
                 >
                   Impressum
                 </a>
@@ -107,7 +107,7 @@ export const Footer = () => {
               <li>
                 <a
                   href="#"
-                  className="font-body text-sm text-background/70 hover:text-background transition-colors"
+                  className="font-body text-sm text-cream/70 hover:text-cream transition-colors"
                 >
                   Datenschutz
                 </a>
@@ -117,8 +117,8 @@ export const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-background/10 text-center">
-          <p className="font-body text-sm text-background/50">
+        <div className="pt-8 border-t border-cream/10 text-center">
+          <p className="font-body text-sm text-cream/50">
             © {currentYear} Martina Zorbach Coaching. Alle Rechte vorbehalten.
           </p>
         </div>

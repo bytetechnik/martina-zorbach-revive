@@ -27,8 +27,8 @@
     --muted: 35 20% 90%;
     --muted-foreground: 30 10% 45%;
 
-    /* Soft terracotta accent */
-    --accent: 18 45% 65%;
+    /* Warm dusty rose accent */
+    --accent: 25 35% 55%;
     --accent-foreground: 40 30% 97%;
 
     --destructive: 0 84.2% 60.2%;
@@ -46,8 +46,8 @@
     --sage-dark: 79 18% 45%;
     --cream: 40 35% 95%;
     --cream-dark: 35 30% 88%;
-    --terracotta: 18 45% 65%;
-    --terracotta-light: 18 50% 75%;
+    --terracotta: 25 35% 55%;
+    --terracotta-light: 25 40% 68%;
     --warm-gray: 30 10% 40%;
 
     /* Gradients */
@@ -89,7 +89,7 @@
     --muted: 30 10% 20%;
     --muted-foreground: 35 15% 60%;
 
-    --accent: 18 50% 60%;
+    --accent: 25 40% 60%;
     --accent-foreground: 30 15% 10%;
 
     --destructive: 0 62.8% 30.6%;
