@@ -257,12 +257,56 @@ export const HeroSection = () => {
         </div>
       </div>
 
-      {/* Scroll Indicator */}
+      {/* Floating Services Bar - Half in hero, half below */}
+      <motion.div
+        initial={{ opacity: 0, y: 60 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 1.8 }}
+        className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 z-20 w-[95%] max-w-6xl"
+      >
+        <div className="bg-sage-dark/95 backdrop-blur-xl rounded-3xl shadow-2xl border border-sage/30 overflow-hidden">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
+            {[
+              { title: "Führungskräfte", subtitle: "Coaching" },
+              { title: "Karriere", subtitle: "Coaching" },
+              { title: "Life Transition", subtitle: "Coaching" },
+              { title: "Ruhestands-", subtitle: "Coaching" },
+              { title: "Persönlichkeits-", subtitle: "Analyse" },
+            ].map((service, index) => (
+              <motion.div
+                key={service.title}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 2 + index * 0.1 }}
+                className={`group relative p-6 md:p-8 text-center cursor-pointer transition-all duration-300 hover:bg-sage/20 ${
+                  index < 4 ? "border-r border-cream/10" : ""
+                } ${index < 3 ? "lg:border-r" : "lg:border-r-0"} ${
+                  index === 3 ? "lg:border-r" : ""
+                }`}
+              >
+                <div className="relative z-10">
+                  <h3 className="font-display text-cream text-base md:text-lg leading-tight group-hover:text-white transition-colors">
+                    {service.title}
+                  </h3>
+                  <p className="font-body text-cream/70 text-sm md:text-base group-hover:text-cream transition-colors">
+                    {service.subtitle}
+                  </p>
+                </div>
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                />
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Scroll Indicator - moved up */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
+        transition={{ delay: 2.5 }}
+        className="absolute bottom-32 left-1/2 -translate-x-1/2 z-10"
       >
         <motion.button
           onClick={scrollToAbout}
