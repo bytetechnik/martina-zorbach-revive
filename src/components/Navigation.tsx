@@ -23,7 +23,7 @@ export const Navigation = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border/50"
+      className="fixed top-4 left-4 right-4 z-50 bg-background/80 backdrop-blur-lg border border-border/50 rounded-2xl shadow-lg"
     >
       <div className="container-narrow mx-auto px-6 lg:px-12">
         <div className="flex items-center justify-between h-20">
