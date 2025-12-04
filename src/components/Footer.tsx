@@ -34,6 +34,7 @@ export const Footer = () => {
                 { name: "Startseite", href: "/" },
                 { name: "Über mich", href: "/ueber-mich" },
                 { name: "Angebote", href: "/angebote" },
+                { name: "Kosten & Ablauf", href: "/kosten-ablauf" },
                 { name: "FAQ", href: "/faq" },
                 { name: "Referenzen", href: "/referenzen" },
               ].map((link) => (
