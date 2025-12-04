@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight, Sparkles, Users, TrendingUp, Compass, Sun, Brain } from "lucide-react";
 import { Button } from "./ui/button";
 import { Link } from "react-router-dom";
 import martinaHero from "@/assets/martina-hero.png";
@@ -257,56 +257,12 @@ export const HeroSection = () => {
         </div>
       </div>
 
-      {/* Floating Services Bar - Half in hero, half below */}
-      <motion.div
-        initial={{ opacity: 0, y: 60 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 1.8 }}
-        className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 z-20 w-[95%] max-w-6xl"
-      >
-        <div className="bg-sage-dark/95 backdrop-blur-xl rounded-3xl shadow-2xl border border-sage/30 overflow-hidden">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
-            {[
-              { title: "Führungskräfte", subtitle: "Coaching" },
-              { title: "Karriere", subtitle: "Coaching" },
-              { title: "Life Transition", subtitle: "Coaching" },
-              { title: "Ruhestands-", subtitle: "Coaching" },
-              { title: "Persönlichkeits-", subtitle: "Analyse" },
-            ].map((service, index) => (
-              <motion.div
-                key={service.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 2 + index * 0.1 }}
-                className={`group relative p-6 md:p-8 text-center cursor-pointer transition-all duration-300 hover:bg-sage/20 ${
-                  index < 4 ? "border-r border-cream/10" : ""
-                } ${index < 3 ? "lg:border-r" : "lg:border-r-0"} ${
-                  index === 3 ? "lg:border-r" : ""
-                }`}
-              >
-                <div className="relative z-10">
-                  <h3 className="font-display text-cream text-base md:text-lg leading-tight group-hover:text-white transition-colors">
-                    {service.title}
-                  </h3>
-                  <p className="font-body text-cream/70 text-sm md:text-base group-hover:text-cream transition-colors">
-                    {service.subtitle}
-                  </p>
-                </div>
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                />
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </motion.div>
-
-      {/* Scroll Indicator - moved up */}
+      {/* Scroll Indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 2.5 }}
-        className="absolute bottom-32 left-1/2 -translate-x-1/2 z-10"
+        transition={{ delay: 2 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
       >
         <motion.button
           onClick={scrollToAbout}
@@ -326,6 +282,72 @@ export const HeroSection = () => {
           </div>
         </motion.button>
       </motion.div>
+    </section>
+  );
+};
+
+// Services Bar Component - Separate section below hero
+export const ServicesBar = () => {
+  const services = [
+    { title: "Führungskräfte", subtitle: "Coaching", icon: Users },
+    { title: "Karriere", subtitle: "Coaching", icon: TrendingUp },
+    { title: "Life Transition", subtitle: "Coaching", icon: Compass },
+    { title: "Ruhestands-", subtitle: "Coaching", icon: Sun },
+    { title: "Persönlichkeits-", subtitle: "Analyse", icon: Brain },
+  ];
+
+  return (
+    <section className="relative z-20 -mt-1 pb-16 bg-background">
+      <div className="container-narrow mx-auto px-4 md:px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="bg-sage-dark/95 backdrop-blur-xl rounded-3xl shadow-2xl border border-sage/30 overflow-hidden"
+        >
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
+            {services.map((service, index) => {
+              const IconComponent = service.icon;
+              return (
+                <motion.div
+                  key={service.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className={`group relative p-6 md:p-8 text-center cursor-pointer transition-all duration-300 hover:bg-sage/20 ${
+                    index < 4 ? "border-r border-cream/10 lg:border-r" : ""
+                  } ${index === 1 || index === 3 ? "border-r-0 md:border-r" : ""} ${
+                    index === 2 ? "md:border-r-0 lg:border-r" : ""
+                  } ${index >= 2 && index < 4 ? "border-t md:border-t-0" : ""} ${
+                    index === 4 ? "col-span-2 md:col-span-1 border-t lg:border-t-0" : ""
+                  }`}
+                >
+                  <div className="relative z-10 flex flex-col items-center">
+                    <motion.div 
+                      className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-cream/10 flex items-center justify-center mb-4 group-hover:bg-cream/20 group-hover:scale-110 transition-all duration-300"
+                      whileHover={{ rotate: [0, -5, 5, 0] }}
+                      transition={{ duration: 0.4 }}
+                    >
+                      <IconComponent className="w-6 h-6 md:w-7 md:h-7 text-cream group-hover:text-white transition-colors" />
+                    </motion.div>
+                    <h3 className="font-display text-cream text-base md:text-lg leading-tight group-hover:text-white transition-colors">
+                      {service.title}
+                    </h3>
+                    <p className="font-body text-cream/70 text-sm md:text-base group-hover:text-cream transition-colors">
+                      {service.subtitle}
+                    </p>
+                  </div>
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  />
+                </motion.div>
+              );
+            })}
+          </div>
+        </motion.div>
+      </div>
     </section>
   );
 };
