@@ -27,7 +27,7 @@ export const HeroSection = () => {
   };
 
   return (
-    <section ref={sectionRef} className="relative min-h-screen overflow-hidden bg-background">
+    <section ref={sectionRef} className="relative min-h-screen overflow-hidden bg-background pt-8">
       {/* Animated Background Grid with Parallax */}
       <motion.div 
         className="absolute inset-0 opacity-[0.03]"
@@ -107,7 +107,7 @@ export const HeroSection = () => {
       {/* Main Content Grid */}
       <div className="relative z-10 min-h-screen grid lg:grid-cols-2 items-center">
         {/* Left Content */}
-        <div className="px-6 lg:px-16 xl:px-24 pt-32 pb-12 lg:py-20">
+        <div className="px-6 lg:px-16 xl:px-24 pt-36 pb-12 lg:pt-32 lg:pb-20">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
