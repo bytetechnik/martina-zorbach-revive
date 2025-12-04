@@ -97,20 +97,20 @@ export const Footer = () => {
             <h4 className="font-display text-lg mb-4">Rechtliches</h4>
             <ul className="space-y-2">
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/impressum"
                   className="font-body text-sm text-cream/70 hover:text-cream transition-colors"
                 >
                   Impressum
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/datenschutz"
                   className="font-body text-sm text-cream/70 hover:text-cream transition-colors"
                 >
                   Datenschutz
-                </a>
+                </Link>
               </li>
             </ul>
           </motion.div>

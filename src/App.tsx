@@ -12,6 +12,8 @@ import KostenAblauf from "./pages/KostenAblauf";
 import FAQ from "./pages/FAQ";
 import Kontakt from "./pages/Kontakt";
 import Referenzen from "./pages/Referenzen";
+import Impressum from "./pages/Impressum";
+import Datenschutz from "./pages/Datenschutz";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -29,6 +31,8 @@ const AnimatedRoutes = () => {
         <Route path="/faq" element={<PageTransition><FAQ /></PageTransition>} />
         <Route path="/kontakt" element={<PageTransition><Kontakt /></PageTransition>} />
         <Route path="/referenzen" element={<PageTransition><Referenzen /></PageTransition>} />
+        <Route path="/impressum" element={<PageTransition><Impressum /></PageTransition>} />
+        <Route path="/datenschutz" element={<PageTransition><Datenschutz /></PageTransition>} />
         <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
       </Routes>
     </AnimatePresence>
