@@ -8,7 +8,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import martinaContact from "@/assets/martina-contact.jpg";
 
 const contactInfo = [
   {
@@ -128,20 +127,6 @@ const Kontakt = () => {
                 ))}
               </div>
 
-              {/* Image */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.5 }}
-                className="relative hidden lg:block"
-              >
-                <div className="absolute -inset-4 bg-gradient-to-br from-primary/10 to-terracotta/10 rounded-2xl -z-10" />
-                <img
-                  src={martinaContact}
-                  alt="Martina Zorbach"
-                  className="w-full rounded-2xl shadow-soft object-cover aspect-[4/3]"
-                />
-              </motion.div>
             </div>
 
             {/* Right Column - Form */}
