@@ -2,6 +2,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Award, BookOpen, Users } from "lucide-react";
 import { Button } from "./ui/button";
+import { Link } from "react-router-dom";
 import martinaPortrait from "@/assets/martina-portrait.jpg";
 
 const highlights = [
@@ -17,18 +18,14 @@ const highlights = [
   },
   {
     icon: Users,
-    title: "Langjährige Erfahrung",
-    description: "Praxis in verschiedenen Kontexten"
+    title: "25+ Jahre Erfahrung",
+    description: "Führungskraft & HR-Expertin"
   }
 ];
 
 export const AboutSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-
-  const scrollToContact = () => {
-    document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
-  };
 
   return (
     <section id="about" className="section-padding bg-background">
@@ -110,11 +107,11 @@ export const AboutSection = () => {
               transition={{ duration: 0.6, delay: 0.6 }}
               className="flex flex-col sm:flex-row gap-4"
             >
-              <Button onClick={scrollToContact} size="lg">
-                Lernen Sie mich kennen
+              <Button asChild size="lg">
+                <Link to="/ueber-mich">Mehr erfahren</Link>
               </Button>
-              <Button variant="outline" size="lg" onClick={scrollToContact}>
-                Kostenloses Erstgespräch
+              <Button variant="outline" size="lg" asChild>
+                <Link to="/kontakt">Kostenloses Erstgespräch</Link>
               </Button>
             </motion.div>
           </div>

@@ -1,15 +1,12 @@
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import { Button } from "./ui/button";
+import { Link } from "react-router-dom";
 import martinaHero from "@/assets/martina-hero.png";
 
 export const HeroSection = () => {
-  const scrollToServices = () => {
-    document.querySelector("#services")?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  const scrollToContact = () => {
-    document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
+  const scrollToAbout = () => {
+    document.querySelector("#about")?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -78,17 +75,17 @@ export const HeroSection = () => {
             <Button
               variant="hero"
               size="lg"
-              onClick={scrollToContact}
+              asChild
             >
-              Kostenloses Erstgespräch
+              <Link to="/kontakt">Kostenloses Erstgespräch</Link>
             </Button>
             <Button
               variant="outline"
               size="lg"
-              onClick={scrollToServices}
+              asChild
               className="border-cream/30 text-cream hover:bg-cream/10 hover:text-cream"
             >
-              Meine Angebote
+              <Link to="/angebote">Meine Angebote</Link>
             </Button>
           </motion.div>
         </div>
@@ -102,7 +99,7 @@ export const HeroSection = () => {
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
       >
         <motion.button
-          onClick={scrollToServices}
+          onClick={scrollToAbout}
           className="flex flex-col items-center gap-2 text-cream/60 hover:text-cream transition-colors"
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
