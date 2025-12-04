@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Button } from "./ui/button";
@@ -16,14 +16,27 @@ const navLinks = [
 
 export const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="fixed top-4 left-4 right-4 z-50 bg-cream/90 backdrop-blur-lg border border-sage/20 rounded-2xl shadow-soft"
+      className={`fixed top-4 left-4 right-4 z-50 rounded-2xl transition-all duration-300 ${
+        scrolled
+          ? "bg-cream/95 backdrop-blur-lg border border-sage/20 shadow-soft"
+          : "bg-transparent border border-transparent"
+      }`}
     >
       <div className="container-narrow mx-auto px-6 lg:px-12">
         <div className="flex items-center justify-between h-20">
