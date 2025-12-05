@@ -35,7 +35,7 @@ export const Navigation = () => {
       className={`fixed top-4 left-4 right-4 z-50 rounded-2xl transition-all duration-300 ${
         scrolled
           ? "bg-cream/95 backdrop-blur-lg border border-sage/20 shadow-soft"
-          : "bg-transparent border border-transparent"
+          : "lg:bg-transparent lg:border-transparent bg-cream/95 backdrop-blur-lg border border-sage/20 shadow-soft"
       }`}
     >
       <div className="container-narrow mx-auto px-6 lg:px-12">
@@ -87,7 +87,7 @@ export const Navigation = () => {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="lg:hidden bg-cream/95 border-t border-sage/10 rounded-b-2xl"
+            className="lg:hidden border-t border-sage/20 rounded-b-2xl"
           >
             <div className="px-6 py-6 flex flex-col gap-4">
               {navLinks.map((link, index) => (
