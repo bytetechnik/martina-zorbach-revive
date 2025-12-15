@@ -6,10 +6,9 @@ import { Link, useLocation } from "react-router-dom";
 
 const navLinks = [
   { name: "Startseite", href: "/" },
+  { name: "Karriere & Führung", href: "/karriere-fuehrung" },
+  { name: "LebenszeitPlus", href: "/lebenszeitplus-ruhestandscoaching" },
   { name: "Über mich", href: "/ueber-mich" },
-  { name: "Meine Angebote", href: "/angebote" },
-  { name: "Kosten & Ablauf", href: "/kosten-ablauf" },
-  { name: "FAQ", href: "/faq" },
   { name: "Referenzen", href: "/referenzen" },
   { name: "Kontakt", href: "/kontakt" },
 ];

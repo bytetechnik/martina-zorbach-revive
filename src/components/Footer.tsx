@@ -32,11 +32,11 @@ export const Footer = () => {
             <ul className="space-y-2">
               {[
                 { name: "Startseite", href: "/" },
+                { name: "Karriere & Führung", href: "/karriere-fuehrung" },
+                { name: "LebenszeitPlus", href: "/lebenszeitplus-ruhestandscoaching" },
                 { name: "Über mich", href: "/ueber-mich" },
-                { name: "Angebote", href: "/angebote" },
-                { name: "Kosten & Ablauf", href: "/kosten-ablauf" },
-                { name: "FAQ", href: "/faq" },
                 { name: "Referenzen", href: "/referenzen" },
+                { name: "Kontakt", href: "/kontakt" },
               ].map((link) => (
                 <li key={link.name}>
                   <Link
