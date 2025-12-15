@@ -3,6 +3,7 @@ import { useRef } from "react";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { PageHero } from "@/components/PageHero";
+import { SEO } from "@/components/SEO";
 import { Quote } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -75,6 +76,10 @@ const TestimonialCard = ({ testimonial, index }: { testimonial: typeof testimoni
 const Referenzen = () => {
   return (
     <main className="min-h-screen bg-background">
+      <SEO 
+        title="Referenzen"
+        description="Kundenstimmen und Erfahrungsberichte von Klienten des Coaching-Angebots von Martina Zorbach in Frankfurt am Main."
+      />
       <Navigation />
       <PageHero 
         title="Referenzen" 

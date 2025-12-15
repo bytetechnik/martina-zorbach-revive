@@ -3,6 +3,7 @@ import { useRef, useState } from "react";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { PageHero } from "@/components/PageHero";
+import { SEO } from "@/components/SEO";
 import { Mail, MapPin, Phone, Send, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -83,6 +84,10 @@ const Kontakt = () => {
 
   return (
     <main className="min-h-screen bg-background">
+      <SEO 
+        title="Kontakt"
+        description="Kontaktieren Sie Martina Zorbach für ein kostenloses Erstgespräch. Coaching in Frankfurt am Main oder online – ich freue mich auf Ihre Nachricht."
+      />
       <Navigation />
       <PageHero 
         title="Kontakt" 

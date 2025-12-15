@@ -2,10 +2,15 @@ import { motion } from "framer-motion";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { PageHero } from "@/components/PageHero";
+import { SEO } from "@/components/SEO";
 
 const Impressum = () => {
   return (
     <main className="min-h-screen bg-background">
+      <SEO 
+        title="Impressum"
+        description="Impressum von Martina Zorbach Coaching – Angaben gemäß § 5 TMG und rechtliche Informationen."
+      />
       <Navigation />
       <PageHero 
         title="Impressum" 
