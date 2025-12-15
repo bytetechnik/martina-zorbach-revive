@@ -3,6 +3,7 @@ import { useRef } from "react";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { PageHero } from "@/components/PageHero";
+import { SEO } from "@/components/SEO";
 import { Sun, Heart, Users, Compass, CheckCircle, Clock, Euro, Phone, Video } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -100,6 +101,10 @@ const LebenszeitPlus = () => {
 
   return (
     <main className="min-h-screen bg-background">
+      <SEO 
+        title="LebenszeitPlus – Ruhestandscoaching"
+        description="Ruhestandscoaching in Frankfurt für Menschen 45+. Bereiten Sie sich aktiv auf die zweite Lebenshälfte vor und gestalten Sie Ihren Ruhestand zur besten Zeit Ihres Lebens."
+      />
       <Navigation />
       <PageHero
         title="LebenszeitPlus"

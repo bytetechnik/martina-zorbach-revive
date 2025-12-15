@@ -3,6 +3,7 @@ import { useRef } from "react";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { PageHero } from "@/components/PageHero";
+import { SEO } from "@/components/SEO";
 import { Award, Briefcase, GraduationCap, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -39,6 +40,10 @@ const UeberMich = () => {
 
   return (
     <main className="min-h-screen bg-background">
+      <SEO 
+        title="Über mich"
+        description="Martina Zorbach – Diplom-Psychologin, Systemische Coachin und erfahrene Führungskraft mit über 25 Jahren Erfahrung in HR und Personalentwicklung."
+      />
       <Navigation />
       <PageHero title="Über mich" subtitle="Lernen Sie mich kennen" />
 

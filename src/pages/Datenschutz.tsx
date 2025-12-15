@@ -2,10 +2,15 @@ import { motion } from "framer-motion";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { PageHero } from "@/components/PageHero";
+import { SEO } from "@/components/SEO";
 
 const Datenschutz = () => {
   return (
     <main className="min-h-screen bg-background">
+      <SEO 
+        title="Datenschutz"
+        description="Datenschutzerklärung von Martina Zorbach Coaching – Informationen zur Verarbeitung Ihrer personenbezogenen Daten."
+      />
       <Navigation />
       <PageHero 
         title="Datenschutz" 

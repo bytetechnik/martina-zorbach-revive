@@ -3,6 +3,7 @@ import { useRef } from "react";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { PageHero } from "@/components/PageHero";
+import { SEO } from "@/components/SEO";
 import { Briefcase, Compass, Heart, User, CheckCircle, Clock, Euro, Phone, Video, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -177,6 +178,10 @@ const ServiceSection = ({ service, index }: { service: typeof services[0]; index
 const KarriereFuehrung = () => {
   return (
     <main className="min-h-screen bg-background">
+      <SEO 
+        title="Karriere & Führung"
+        description="Coaching für Führungskräfte und Karriereentwicklung in Frankfurt. Führungskräfte-Coaching, Karriereberatung, Life Transition und Persönlichkeitsanalyse mit Martina Zorbach."
+      />
       <Navigation />
       <PageHero
         title="Karriere & Führung"
