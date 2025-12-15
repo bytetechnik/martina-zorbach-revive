@@ -8,6 +8,12 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 const contactInfo = [
   {
@@ -33,6 +39,25 @@ const contactInfo = [
     label: "Erstgespräch",
     value: "Kostenfrei und unverbindlich",
     href: null
+  }
+];
+
+const faqs = [
+  {
+    question: "Was ist Coaching?",
+    answer: "Coaching unterstützt die positive Entwicklung eines Menschen. Kernelement sind strukturierte Gespräche zwischen einem Coach und einem Coachee (Klienten), in denen ein Coach den Coachee dabei unterstützt, seine persönlichen und beruflichen Ziele zu definieren, Hindernisse zu überwinden und sein volles Potenzial zu entfalten."
+  },
+  {
+    question: "Wie wirkt Coaching?",
+    answer: "Coaching wirkt, indem es dem Coachee ermöglicht, sich selbst besser zu verstehen und positive Veränderungen selbst anzustoßen. Durch den einfühlsamen Dialog und die gezielte Unterstützung gewinnt der Coachee an Selbstvertrauen und Selbstbewusstsein."
+  },
+  {
+    question: "Wie lange dauert ein Coaching-Prozess?",
+    answer: "Meine Erfahrung zeigt, dass bereits nach 4 bis 6 Sitzungen positive Ergebnisse erzielt werden. Anzahl und Häufigkeit der Sitzungen variieren je nach Ihren individuellen Erfordernissen. In der Regel dauern die einzelnen Coachingsitzungen 90 Minuten."
+  },
+  {
+    question: "Was kostet ein Coaching?",
+    answer: "Das Honorar orientiert sich an den Empfehlungen des Deutschen Coaching Verbandes. Für Selbstzahler biete ich spezielle Konditionen an – sprechen Sie mich gerne im Erstgespräch darauf an."
   }
 ];
 
@@ -248,6 +273,47 @@ const Kontakt = () => {
               Gummersbergstr. 17, 60435 Frankfurt am Main
             </p>
           </motion.div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="section-padding bg-secondary/30">
+        <div className="container-narrow mx-auto max-w-3xl">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <h2 className="font-display text-3xl md:text-4xl text-foreground mb-4">
+              Häufige Fragen
+            </h2>
+          </motion.div>
+
+          <Accordion type="single" collapsible className="space-y-4">
+            {faqs.map((faq, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+              >
+                <AccordionItem
+                  value={`item-${index}`}
+                  className="bg-card rounded-xl border border-border/50 px-6 overflow-hidden"
+                >
+                  <AccordionTrigger className="font-display text-lg text-foreground hover:text-primary py-6 hover:no-underline text-left">
+                    {faq.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="font-body text-muted-foreground leading-relaxed pb-6">
+                    {faq.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              </motion.div>
+            ))}
+          </Accordion>
         </div>
       </section>
 

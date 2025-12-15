@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { ArrowRight, Sparkles, Users, TrendingUp, Compass, Sun, Brain } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
 import { Button } from "./ui/button";
 import { Link } from "react-router-dom";
 import martinaHero from "@/assets/martina-hero.png";
@@ -163,7 +163,7 @@ export const HeroSection = () => {
               </Link>
             </Button>
             <Button variant="outline" size="lg" asChild>
-              <Link to="/angebote">Meine Angebote</Link>
+              <Link to="/karriere-fuehrung">Meine Angebote</Link>
             </Button>
           </motion.div>
 
@@ -282,75 +282,6 @@ export const HeroSection = () => {
           </div>
         </motion.button>
       </motion.div>
-    </section>
-  );
-};
-
-// Services Bar Component - Separate section below hero
-export const ServicesBar = () => {
-  const services = [
-    { title: "Führungskräfte", subtitle: "Coaching", icon: Users, hash: "#fuehrungskraefte" },
-    { title: "Karriere", subtitle: "Coaching", icon: TrendingUp, hash: "#karriere" },
-    { title: "Life Transition", subtitle: "Coaching", icon: Compass, hash: "#life-transition" },
-    { title: "Ruhestands-", subtitle: "Coaching", icon: Sun, hash: "#ruhestand" },
-    { title: "Persönlichkeits-", subtitle: "Analyse", icon: Brain, hash: "#persoenlichkeit" },
-  ];
-
-  return (
-    <section className="relative z-20 -mt-1 pb-16 bg-background">
-      <div className="container-narrow mx-auto px-4 md:px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="bg-sage-dark/95 backdrop-blur-xl rounded-3xl shadow-2xl border border-sage/30 overflow-hidden"
-        >
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
-            {services.map((service, index) => {
-              const IconComponent = service.icon;
-              return (
-                <Link
-                  key={service.title}
-                  to={`/angebote${service.hash}`}
-                  className={`group relative p-6 md:p-8 text-center transition-all duration-300 hover:bg-sage/20 ${
-                    index < 4 ? "border-r border-cream/10 lg:border-r" : ""
-                  } ${index === 1 || index === 3 ? "border-r-0 md:border-r" : ""} ${
-                    index === 2 ? "md:border-r-0 lg:border-r" : ""
-                  } ${index >= 2 && index < 4 ? "border-t md:border-t-0" : ""} ${
-                    index === 4 ? "col-span-2 md:col-span-1 border-t lg:border-t-0" : ""
-                  }`}
-                >
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="relative z-10 flex flex-col items-center"
-                  >
-                    <motion.div 
-                      className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-cream/10 flex items-center justify-center mb-4 group-hover:bg-cream/20 group-hover:scale-110 transition-all duration-300"
-                      whileHover={{ rotate: [0, -5, 5, 0] }}
-                      transition={{ duration: 0.4 }}
-                    >
-                      <IconComponent className="w-6 h-6 md:w-7 md:h-7 text-cream group-hover:text-white transition-colors" />
-                    </motion.div>
-                    <h3 className="font-display text-cream text-base md:text-lg leading-tight group-hover:text-white transition-colors">
-                      {service.title}
-                    </h3>
-                    <p className="font-body text-cream/70 text-sm md:text-base group-hover:text-cream transition-colors">
-                      {service.subtitle}
-                    </p>
-                  </motion.div>
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  />
-                </Link>
-              );
-            })}
-          </div>
-        </motion.div>
-      </div>
     </section>
   );
 };
