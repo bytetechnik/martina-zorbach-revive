@@ -97,7 +97,7 @@ const ConcernCard = ({ concern, isOpen, onToggle, index }: {
             ? isPrimary 
               ? "glass-primary shadow-[0_20px_60px_-15px_hsl(var(--primary)/0.3)]" 
               : "glass-accent shadow-[0_20px_60px_-15px_hsl(var(--accent)/0.4)]"
-            : "glass-subtle hover:shadow-lg"
+            : "glass-subtle hover:shadow-lg hover:-translate-y-1"
         }`}
       >
         {/* Header - Clickable */}
