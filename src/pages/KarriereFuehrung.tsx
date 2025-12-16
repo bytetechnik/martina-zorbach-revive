@@ -189,19 +189,54 @@ const KarriereFuehrung = () => {
         accent="für Ihren beruflichen Erfolg"
       />
 
-      {/* Quick Navigation */}
-      <section className="py-8 bg-card border-b border-border/50 sticky top-20 z-40">
+      {/* Quick Navigation - Desktop */}
+      <section className="hidden md:block py-8 bg-card border-b border-border/50 sticky top-20 z-40">
         <div className="container-narrow mx-auto px-6 overflow-x-auto">
-          <div className="flex gap-4 min-w-max">
-            {services.map((service) => (
-              <a
-                key={service.id}
-                href={`#${service.id}`}
-                className="px-4 py-2 rounded-full bg-secondary text-sm font-body text-muted-foreground hover:bg-primary hover:text-primary-foreground transition-colors whitespace-nowrap"
-              >
-                {service.title}
-              </a>
-            ))}
+          <div className="flex gap-4 min-w-max justify-center">
+            {services.map((service) => {
+              const Icon = service.icon;
+              return (
+                <a
+                  key={service.id}
+                  href={`#${service.id}`}
+                  className="flex items-center gap-2 px-5 py-3 rounded-xl bg-secondary text-sm font-body text-muted-foreground hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 whitespace-nowrap"
+                >
+                  <Icon size={18} />
+                  {service.title}
+                </a>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Quick Navigation - Mobile Cards */}
+      <section className="md:hidden py-8 bg-card border-b border-border/50">
+        <div className="container-narrow mx-auto px-4">
+          <p className="font-body text-sm text-muted-foreground text-center mb-4">
+            Direkt zum Thema
+          </p>
+          <div className="grid grid-cols-2 gap-3">
+            {services.map((service, index) => {
+              const Icon = service.icon;
+              return (
+                <motion.a
+                  key={service.id}
+                  href={`#${service.id}`}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
+                  className="group glass-subtle rounded-2xl p-4 flex flex-col items-center text-center gap-3 hover:shadow-lg transition-all duration-300 active:scale-[0.98]"
+                >
+                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
+                    <Icon size={22} className="text-primary group-hover:text-primary-foreground transition-colors" />
+                  </div>
+                  <span className="font-body text-xs font-medium text-foreground leading-tight">
+                    {service.title.replace(" (LINC Personality Profiler)", "")}
+                  </span>
+                </motion.a>
+              );
+            })}
           </div>
         </div>
       </section>
