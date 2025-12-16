@@ -33,8 +33,8 @@ export const Navigation = () => {
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={`fixed top-4 left-4 right-4 z-50 rounded-2xl transition-all duration-300 ${
         scrolled
-          ? "bg-cream/95 backdrop-blur-lg border border-sage/20 shadow-soft"
-          : "lg:bg-transparent lg:border-transparent bg-cream/95 backdrop-blur-lg border border-sage/20 shadow-soft"
+          ? "bg-gradient-to-b from-cream to-cream/90 backdrop-blur-lg border border-sage/30 shadow-[0_8px_32px_-8px_rgba(0,0,0,0.15),0_4px_8px_-4px_rgba(0,0,0,0.1),inset_0_1px_0_rgba(255,255,255,0.8)] transform-gpu"
+          : "lg:bg-transparent lg:border-transparent lg:shadow-none bg-gradient-to-b from-cream to-cream/90 backdrop-blur-lg border border-sage/30 shadow-[0_8px_32px_-8px_rgba(0,0,0,0.15),0_4px_8px_-4px_rgba(0,0,0,0.1),inset_0_1px_0_rgba(255,255,255,0.8)] transform-gpu"
       }`}
     >
       <div className="container-narrow mx-auto px-6 lg:px-12">
