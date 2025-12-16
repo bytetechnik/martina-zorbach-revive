@@ -8,10 +8,8 @@ import {
   Compass, 
   User,
   ChevronDown,
-  ArrowRight,
-  Sparkles
+  ArrowRight
 } from "lucide-react";
-import { Button } from "./ui/button";
 
 const concerns = [
   {
@@ -227,63 +225,6 @@ export const ConcernsSection = () => {
         </div>
       </section>
 
-      {/* Question 2: Coach Section */}
-      <section className="section-padding bg-background relative overflow-hidden">
-        {/* Background decoration */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-3xl" />
-        </div>
-
-        <div className="container-narrow mx-auto relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="glass-strong rounded-3xl p-8 md:p-12 text-center max-w-3xl mx-auto"
-          >
-            <motion.div
-              initial={{ scale: 0.8, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-6"
-            >
-              <Sparkles size={32} className="text-primary" />
-            </motion.div>
-
-            <h2 className="font-display text-2xl md:text-3xl lg:text-4xl text-foreground mb-4">
-              Welcher Coach passt zu mir?
-            </h2>
-
-            <p className="font-body text-lg text-muted-foreground leading-relaxed mb-4">
-              <span className="font-medium text-foreground">Lernen Sie mich kennen!</span>
-            </p>
-
-            <p className="font-body text-muted-foreground leading-relaxed mb-8 max-w-xl mx-auto">
-              Erfahren Sie mehr über meine Qualifikationen und meinen Werdegang. 
-              Vereinbaren Sie ein persönliches Kennenlerngespräch – kostenfrei und 
-              unverbindlich – dann können Sie mehr über mich erfahren, wie ich arbeite 
-              und eine erste Einschätzung gewinnen, ob die „Chemie" stimmt.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="lg" className="group">
-                <Link to="/ueber-mich">
-                  Über mich
-                  <ArrowRight size={16} className="ml-1 transition-transform group-hover:translate-x-1" />
-                </Link>
-              </Button>
-
-              <Button asChild variant="outline" size="lg">
-                <Link to="/kontakt">
-                  Erstgespräch vereinbaren
-                </Link>
-              </Button>
-            </div>
-          </motion.div>
-        </div>
-      </section>
     </>
   );
 };
