@@ -55,10 +55,10 @@ export const PathwayTiles = () => {
                   to={pathway.href}
                   className="group block h-full"
                 >
-                  <div className={`relative h-full rounded-3xl p-8 md:p-10 transition-all duration-500 overflow-hidden hover:-translate-y-2 ${
+                  <div className={`relative h-full rounded-3xl p-8 md:p-10 transition-all duration-500 overflow-hidden hover:-translate-y-3 hover:scale-[1.02] ${
                     pathway.color === "primary" 
-                      ? "glass-primary hover:shadow-[0_16px_48px_-12px_hsl(var(--primary)/0.25)]" 
-                      : "glass-accent hover:shadow-[0_16px_48px_-12px_hsl(var(--accent)/0.3)]"
+                      ? "glass-primary hover:shadow-[0_20px_60px_-15px_hsl(var(--primary)/0.4),0_0_30px_-5px_hsl(var(--primary)/0.2)]" 
+                      : "glass-accent hover:shadow-[0_20px_60px_-15px_hsl(var(--accent)/0.5),0_0_30px_-5px_hsl(var(--accent)/0.25)]"
                   }`}>
                     {/* Background Pattern */}
                     <div className="absolute top-0 right-0 w-64 h-64 opacity-5 pointer-events-none">
