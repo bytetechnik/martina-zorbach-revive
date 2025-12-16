@@ -102,7 +102,7 @@ export const AboutSection = () => {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={isInView ? { opacity: 1, scale: 1 } : {}}
                 transition={{ duration: 0.5, delay: 0.8 }}
-                className="absolute -bottom-4 -right-4 bg-card/90 backdrop-blur-sm rounded-xl p-4 shadow-lg border border-border/50"
+                className="absolute -bottom-4 -right-4 glass-strong rounded-xl p-4"
               >
                 <p className="font-display text-2xl text-primary">25+</p>
                 <p className="font-body text-xs text-muted-foreground">Jahre Erfahrung</p>
@@ -157,7 +157,7 @@ export const AboutSection = () => {
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.4, delay: 0.6 + index * 0.1 }}
                 >
-                  <div className="w-12 h-12 rounded-xl bg-secondary flex items-center justify-center mx-auto mb-3">
+                  <div className="w-12 h-12 rounded-xl glass-subtle flex items-center justify-center mx-auto mb-3">
                     <item.icon size={22} className="text-primary" />
                   </div>
                   <h4 className="font-display text-sm text-foreground mb-1">{item.title}</h4>
