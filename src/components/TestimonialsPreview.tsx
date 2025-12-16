@@ -90,7 +90,7 @@ export const TestimonialsPreview = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.15 }}
-              className="relative bg-card rounded-2xl p-6 shadow-soft border border-border/50"
+              className="relative glass-strong rounded-2xl p-6 hover:-translate-y-1 transition-all duration-300"
             >
               <Quote size={24} className="text-primary/20 mb-4" />
               <blockquote className="font-body text-sm text-muted-foreground leading-relaxed mb-4 italic">
